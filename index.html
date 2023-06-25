@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+  <style>
+    body {
+      text-align: center;
+    }
+    table, th, td {
+      width: 300px;
+      margin: auto;
+    }
+    legend{
+      color: dodgerblue;
+    }
+  </style>
+  <script>
+    function calculate_service_price() {
+        const RATIO = 9000;
+        //---------------The Prices Of 30s--------------
+        const INST_ARR_PRICE = 6; //8 
+        const INST_MIX_PRICE = 1.3; //1.3 (mixing + editing + pitch correcion + time correction)
+        const VOX_COMP_PRICE = 5; //5
+        const HAR_COMP_PRICE = 5; //5
+        const VOXS_MIX_PRICE = 6; //10 (mixing + editing + pitch correction + time Correction)
+        //---------------Checkboxes---------------------
+        ////------------------------Instruments---------
+        var instArrChk = (document.getElementById('instArrChk').checked)?1:0; // Musical Arrangement (Boolean)
+        var instMixChk = (document.getElementById('instMixChk').checked)?1:0; // Audio Mixing (Boolean)
+        ////------------------------Vocals--------------
+        var voxCompChk = (document.getElementById('voxCompChk').checked)?1:0; // Composing (Boolean)
+        var harCompChk = (document.getElementById('harCompChk').checked)?1:0; // Adding Harmony (Boolean)
+        var voxsMixChk = (document.getElementById('voxsMixChk').checked)?1:0; // Vocals Editing/Correction/Mixing (Boolean)
+        //---------------Tracks-------------------------
+        var instTracksNum = Number(document.getElementById('instTracksNum').value); // Number of instruments to be arranged (Int)
+        var vocTracksNum = Number(document.getElementById('vocTracksNum').value); // Number of Vocals' tracks to be Corrected/Edited/Mixed (Int)
+        //---------------Duration-----------------------
+        var minutes = Number(document.getElementById('minutes').value); // the duration of the song (Int)
+        var seconds = Number(document.getElementById('seconds').value); // the duration of the song (Int)
+        var duration = ((minutes*60)+(seconds)); // // the duration of the song in seconds (Int)
+        //---------------Calculation---------------------
+        var finalPrice = RATIO * 
+        ( 
+          ( (instArrChk * INST_ARR_PRICE * instTracksNum) + (instMixChk * INST_MIX_PRICE * instTracksNum) ) +
+          ( (voxCompChk * VOX_COMP_PRICE) + (harCompChk * HAR_COMP_PRICE) ) +
+          (voxsMixChk * VOXS_MIX_PRICE * vocTracksNum) 
+        ) 
+        * duration 
+        / 30 ;
+        //---------------Printing------------------------
+        document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P";
+    }
+</script>
+<body>
+<form>
+  <br>
+  <fieldset>
+      <legend>My Own Musical Production Service Price Calculator</legend>
+    	<fieldset>
+          <legend>Instruments</legend>
+          <label for="instArrChk">Arrangement: </label>
+          <input type="checkbox" id="instArrChk" name="instArrChk" value="5">
+          
+          <label for="instMixChk">Mixing: </label>
+          <input type="checkbox" id="instMixChk" name="instMixChk" value="5"><br>
+          <hr>
+          <label for="instTracksNum">Number Of Instrument</label><br>
+          <input type="number" id="instTracksNum" name="instTracksNum" value="5" min="0"><br>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Vocals</legend>
+          <label for="voxCompChk">Composing: </label>
+          <input type="checkbox" id="voxCompChk" name="voxCompChk" value="5">
+          
+          <label for="harCompChk">Adding Harmonies/Choirs: </label>
+          <input type="checkbox" id="harCompChk" name="harCompChk" value="5">
+          
+          <label for="voxsMixChk">Mixing/Correction: </label>
+          <input type="checkbox" id="voxsMixChk" name="voxsMixChk" value="5"><br>
+          <hr>
+          <label for="vocTracksNum">Number Of Tracks</label><br>
+          <input type="number" id="vocTracksNum" name="vocTracksNum" value="2" min="0"><br>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Duration</legend>
+          <table>
+            <tr>
+              <th><label for="minutes">Minutes</label></th>
+              <th><label for="seconds">Seconds</label></th>
+            </tr>
+            <tr>
+              <td><input type="number" id="minutes" name="minutes" value="2" min="0"></td>
+              <td><input type="number" id="seconds" name="seconds" value="30" min="0"></td>
+            </tr>
+        </table> 
+        </fieldset>
+    	<br><input type="button" value="Calculate" onclick="calculate_service_price();"><br>
+    </fieldset>
+    <fieldset>
+      <legend>Service Price</legend>
+      <label id="servicePrice" style="font-size:24px;">S.P</label>
+  	</fieldset>
+</form>
+
+</body>
+</html>
+
