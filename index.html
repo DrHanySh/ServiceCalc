@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+      body {
+        text-align: center;
+      }
+      table, th, td {
+        width: 300px;
+        margin: auto;
+      }
+      legend{
+        color: dodgerblue;
+      }
+    </style>
 
-  <style>
-    body {
-      text-align: center;
-    }
-    table, th, td {
-      width: 300px;
-      margin: auto;
-    }
-    legend{
-      color: dodgerblue;
-    }
-  </style>
-  <script>
-    function calculate_service_price() {
-        const RATIO = 9000;
-        //---------------The Prices Of 30s--------------
-        const INST_ARR_PRICE = 6; //8 
-        const INST_MIX_PRICE = 1.3; //1.3 (mixing + editing + pitch correcion + time correction)
-        const VOX_COMP_PRICE = 5; //5
-        const HAR_COMP_PRICE = 5; //5
-        const VOXS_MIX_PRICE = 6; //10 (mixing + editing + pitch correction + time Correction)
-        //---------------Checkboxes---------------------
-        ////------------------------Instruments---------
-        var instArrChk = (document.getElementById('instArrChk').checked)?1:0; // Musical Arrangement (Boolean)
-        var instMixChk = (document.getElementById('instMixChk').checked)?1:0; // Audio Mixing (Boolean)
-        ////------------------------Vocals--------------
-        var voxCompChk = (document.getElementById('voxCompChk').checked)?1:0; // Composing (Boolean)
-        var harCompChk = (document.getElementById('harCompChk').checked)?1:0; // Adding Harmony (Boolean)
-        var voxsMixChk = (document.getElementById('voxsMixChk').checked)?1:0; // Vocals Editing/Correction/Mixing (Boolean)
-        //---------------Tracks-------------------------
-        var instTracksNum = Number(document.getElementById('instTracksNum').value); // Number of instruments to be arranged (Int)
-        var vocTracksNum = Number(document.getElementById('vocTracksNum').value); // Number of Vocals' tracks to be Corrected/Edited/Mixed (Int)
-        //---------------Duration-----------------------
-        var minutes = Number(document.getElementById('minutes').value); // the duration of the song (Int)
-        var seconds = Number(document.getElementById('seconds').value); // the duration of the song (Int)
-        var duration = ((minutes*60)+(seconds)); // // the duration of the song in seconds (Int)
-        //---------------Commission----------------------
-        var CommissionValue = Number(document.getElementById('CommissionValue').value);
-        //---------------Calculation---------------------
-        var finalPrice = RATIO * 
-        ( 
-          ( (instArrChk * INST_ARR_PRICE * instTracksNum) + (instMixChk * INST_MIX_PRICE * instTracksNum) ) +
-          ( (voxCompChk * VOX_COMP_PRICE) + (harCompChk * HAR_COMP_PRICE) ) +
-          (voxsMixChk * VOXS_MIX_PRICE * vocTracksNum) 
-        ) 
-        * duration 
-        / 30 ;
-        var priceAfterDeductingCommission = finalPrice - (finalPrice * CommissionValue /100);
-        //---------------Printing------------------------
-        document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P"; // Printing the final price
-        document.getElementById("priceAfterDeductingCommission").innerHTML = priceAfterDeductingCommission.toLocaleString("en-US") +" S.P"; // Printing the Price after deducting commission
-    }
-</script>
+    <script>
+        function calculate_service_price() {
+            const RATIO = 9000;
+            //---------------The Prices Of 30s--------------
+            const INST_ARR_PRICE = 6; //8 
+            const INST_MIX_PRICE = 1.3; //1.3 (mixing + editing + pitch correcion + time correction)
+            const VOX_COMP_PRICE = 5; //5
+            const HAR_COMP_PRICE = 5; //5
+            const VOXS_MIX_PRICE = 6; //10 (mixing + editing + pitch correction + time Correction)
+            //---------------Checkboxes---------------------
+            ////------------------------Instruments---------
+            var instArrChk = (document.getElementById('instArrChk').checked)?1:0; // Musical Arrangement (Boolean)
+            var instMixChk = (document.getElementById('instMixChk').checked)?1:0; // Audio Mixing (Boolean)
+            ////------------------------Vocals--------------
+            var voxCompChk = (document.getElementById('voxCompChk').checked)?1:0; // Composing (Boolean)
+            var harCompChk = (document.getElementById('harCompChk').checked)?1:0; // Adding Harmony (Boolean)
+            var voxsMixChk = (document.getElementById('voxsMixChk').checked)?1:0; // Vocals Editing/Correction/Mixing (Boolean)
+            //---------------Tracks-------------------------
+            var instTracksNum = Number(document.getElementById('instTracksNum').value); // Number of instruments to be arranged (Int)
+            var vocTracksNum = Number(document.getElementById('vocTracksNum').value); // Number of Vocals' tracks to be Corrected/Edited/Mixed (Int)
+            //---------------Duration-----------------------
+            var minutes = Number(document.getElementById('minutes').value); // the duration of the song (Int)
+            var seconds = Number(document.getElementById('seconds').value); // the duration of the song (Int)
+            var duration = ((minutes*60)+(seconds)); // // the duration of the song in seconds (Int)
+            //---------------Commission----------------------
+            var CommissionValue = Number(document.getElementById('CommissionValue').value);
+            //---------------Calculation---------------------
+            var finalPrice = RATIO * 
+            ( 
+              ( (instArrChk * INST_ARR_PRICE * instTracksNum) + (instMixChk * INST_MIX_PRICE * instTracksNum) ) +
+              ( (voxCompChk * VOX_COMP_PRICE) + (harCompChk * HAR_COMP_PRICE) ) +
+              (voxsMixChk * VOXS_MIX_PRICE * vocTracksNum) 
+            ) 
+            * duration 
+            / 30 ;
+            var priceAfterDeductingCommission = finalPrice - (finalPrice * CommissionValue /100);
+            //---------------Printing------------------------
+            document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P"; // Printing the final price
+            document.getElementById("priceAfterDeductingCommission").innerHTML = priceAfterDeductingCommission.toLocaleString("en-US") +" S.P"; // Printing the Price after deducting commission
+        }
+    </script>
+  </head>
+
 <body>
 <form>
   <br>
