@@ -37,6 +37,8 @@
         var minutes = Number(document.getElementById('minutes').value); // the duration of the song (Int)
         var seconds = Number(document.getElementById('seconds').value); // the duration of the song (Int)
         var duration = ((minutes*60)+(seconds)); // // the duration of the song in seconds (Int)
+        //---------------Commission----------------------
+        var CommissionValue = Number(document.getElementById('CommissionValue').value);
         //---------------Calculation---------------------
         var finalPrice = RATIO * 
         ( 
@@ -46,8 +48,10 @@
         ) 
         * duration 
         / 30 ;
+        var priceAfterDeductingCommission = finalPrice - (finalPrice * CommissionValue /100);
         //---------------Printing------------------------
-        document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P";
+        document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P"; // Printing the final price
+        document.getElementById("priceAfterDeductingCommission").innerHTML = priceAfterDeductingCommission.toLocaleString("en-US") +" S.P"; // Printing the Price after deducting commission
     }
 </script>
 <body>
@@ -100,6 +104,15 @@
     <fieldset>
       <legend>Service Price</legend>
       <label id="servicePrice" style="font-size:24px;">S.P</label>
+  	</fieldset>
+    <fieldset>
+      <legend>Commission</legend>
+      <input type="number" id="CommissionValue" name="CommissionValue" value="40" max="50">
+      <label for="CommissionValue" style="font-size:24px;">%</label>
+  	</fieldset>
+    <fieldset>
+      <legend>Price after deducting commission</legend>
+      <label id="priceAfterDeductingCommission" style="font-size:24px;">S.P</label>
   	</fieldset>
 </form>
 
