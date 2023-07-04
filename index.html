@@ -62,28 +62,28 @@
     	<fieldset>
           <legend>Instruments</legend>
           <label for="instArrChk">Arrangement: </label>
-          <input type="checkbox" id="instArrChk" name="instArrChk" value="5">
+          <input type="checkbox" id="instArrChk" name="instArrChk" value="5" onchange="calculate_service_price();">
           
           <label for="instMixChk">Mixing: </label>
-          <input type="checkbox" id="instMixChk" name="instMixChk" value="5"><br>
+          <input type="checkbox" id="instMixChk" name="instMixChk" value="5" onchange="calculate_service_price();"><br>
           <hr>
           <label for="instTracksNum">Number Of Instrument</label><br>
-          <input type="number" id="instTracksNum" name="instTracksNum" value="5" min="0"><br>
+          <input type="number" id="instTracksNum" name="instTracksNum" value="5" min="0" onchange="calculate_service_price();"><br>
         </fieldset>
         <br>
         <fieldset>
           <legend>Vocals</legend>
           <label for="voxCompChk">Composing: </label>
-          <input type="checkbox" id="voxCompChk" name="voxCompChk" value="5">
+          <input type="checkbox" id="voxCompChk" name="voxCompChk" value="5" onchange="calculate_service_price();">
           
           <label for="harCompChk">Adding Harmonies/Choirs: </label>
-          <input type="checkbox" id="harCompChk" name="harCompChk" value="5">
+          <input type="checkbox" id="harCompChk" name="harCompChk" value="5" onchange="calculate_service_price();">
           
           <label for="voxsMixChk">Mixing/Correction: </label>
-          <input type="checkbox" id="voxsMixChk" name="voxsMixChk" value="5"><br>
+          <input type="checkbox" id="voxsMixChk" name="voxsMixChk" value="5" onchange="calculate_service_price();"><br>
           <hr>
           <label for="vocTracksNum">Number Of Tracks</label><br>
-          <input type="number" id="vocTracksNum" name="vocTracksNum" value="2" min="0"><br>
+          <input type="number" id="vocTracksNum" name="vocTracksNum" value="2" min="0" onchange="calculate_service_price();"><br>
         </fieldset>
         <br>
         <fieldset>
@@ -94,8 +94,8 @@
               <th><label for="seconds">Seconds</label></th>
             </tr>
             <tr>
-              <td><input type="number" id="minutes" name="minutes" value="2" min="0"></td>
-              <td><input type="number" id="seconds" name="seconds" value="30" min="0"></td>
+              <td><input type="number" id="minutes" name="minutes" value="2" min="0" onchange="calculate_service_price();"></td>
+              <td><input type="number" id="seconds" name="seconds" value="30" min="0" onchange="calculate_service_price();"></td>
             </tr>
         </table> 
         </fieldset>
@@ -107,7 +107,7 @@
   	</fieldset>
     <fieldset>
       <legend>Commission</legend>
-      <input type="number" id="CommissionValue" name="CommissionValue" value="40" min="0" max="50">
+      <input type="number" id="CommissionValue" name="CommissionValue" value="40" min="0" max="50" onchange="calculate_service_price();">
       <label for="CommissionValue" style="font-size:24px;">%</label>
   	</fieldset>
     <fieldset>
