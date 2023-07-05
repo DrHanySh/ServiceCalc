@@ -14,6 +14,9 @@
       legend{
         color: dodgerblue;
       }
+      .red{
+        color: #DC381F;
+      }
     </style>
 
     <script>
@@ -55,11 +58,11 @@
             //---------------Printing Sliders Data-----------
             document.getElementById("instTracksNumLabel").innerHTML = instTracksNum; // Printing the number of instruments to be arranged
             document.getElementById("vocTracksNumLabel").innerHTML = vocTracksNum; // Printing the number of Vocals' tracks to be Corrected/Edited/Mixed
-            document.getElementById("duration").innerHTML = minutes + ":" + ((seconds>9)?seconds:"0"+seconds); // Printing the duration of the song
-            document.getElementById("CommissionValueLabel").innerHTML = CommissionValue + "%"; // Printing commission value
+            document.getElementById("duration").innerHTML = "<span class='red'>" + minutes + "</span>" + ":" + "<span class='red'>" + ((seconds>9)?seconds:"0"+seconds) + "</span>"; // Printing the duration of the song
+            document.getElementById("CommissionValueLabel").innerHTML = "<span class='red'>" + CommissionValue + "</span>" + "%"; // Printing commission value
             //---------------Printing------------------------
-            document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P"; // Printing the final price
-            document.getElementById("priceAfterDeductingCommission").innerHTML = priceAfterDeductingCommission.toLocaleString("en-US") +" S.P"; // Printing the Price after deducting commission
+            document.getElementById("servicePrice").innerHTML = "<span class='red'>" + finalPrice.toLocaleString("en-US") + "</span>" +" S.P"; // Printing the final price
+            document.getElementById("priceAfterDeductingCommission").innerHTML = "<span class='red'>" + priceAfterDeductingCommission.toLocaleString("en-US") + "</span>" +" S.P"; // Printing the Price after deducting commission
         }
     </script>
   </head>
@@ -78,7 +81,7 @@
           <input type="checkbox" id="instMixChk" name="instMixChk" value="5" onchange="calculate_service_price();"><br>
           <hr>
           <label for="instTracksNum">Number Of Instrument: </label>
-          <label for="instTracksNum" id="instTracksNumLabel" style="font-size:20px;">5</label><br>
+          <label for="instTracksNum" id="instTracksNumLabel" style="font-size:20px;" class="red">5</label><br>
           <input type="range" id="instTracksNum" name="instTracksNum" value="5" min="0" max="16" step="1" oninput="calculate_service_price();">
         </fieldset>
         <br>
@@ -94,13 +97,13 @@
           <input type="checkbox" id="voxsMixChk" name="voxsMixChk" value="5" onchange="calculate_service_price();"><br>
           <hr>
           <label for="vocTracksNum">Number Of Tracks: </label>
-          <label for="vocTracksNum" id="vocTracksNumLabel" style="font-size:20px;">2</label><br>
+          <label for="vocTracksNum" id="vocTracksNumLabel" style="font-size:20px;" class="red">2</label><br>
           <input type="range" id="vocTracksNum" name="vocTracksNum" value="2" min="0" max="16" step="1" oninput="calculate_service_price();">
         </fieldset>
         <br>
         <fieldset>
           <legend>Duration</legend>
-          <label id="duration" style="font-size:20px;">2:30</label><br>
+          <label id="duration" style="font-size:24px;"><span class="red">2</span>:<span class="red">30</span></label><br>
           <table>
             <tr>
               <th><label for="minutes">Minutes</label></th>
@@ -120,7 +123,7 @@
   	</fieldset>
     <fieldset>
       <legend>Commission</legend>
-      <label for="CommissionValue" id="CommissionValueLabel" style="font-size:20px;">40%</label><br>
+      <label for="CommissionValue" id="CommissionValueLabel" style="font-size:24px;"><span class="red">40</span>%</label><br>
       <input type="range" id="CommissionValue" name="CommissionValue" value="40" min="0" max="50" step="1" oninput="calculate_service_price();">
   	</fieldset>
     <fieldset>
