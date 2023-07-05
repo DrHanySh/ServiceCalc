@@ -56,7 +56,7 @@
             document.getElementById("instTracksNumLabel").innerHTML = instTracksNum; // Printing the number of instruments to be arranged
             document.getElementById("vocTracksNumLabel").innerHTML = vocTracksNum; // Printing the number of Vocals' tracks to be Corrected/Edited/Mixed
             document.getElementById("duration").innerHTML = minutes + ":" + ((seconds>9)?seconds:"0"+seconds); // Printing the duration of the song
-            document.getElementById("CommissionValueLabel").innerHTML = CommissionValue; // Printing commission value
+            document.getElementById("CommissionValueLabel").innerHTML = CommissionValue + "%"; // Printing commission value
             //---------------Printing------------------------
             document.getElementById("servicePrice").innerHTML = finalPrice.toLocaleString("en-US") +" S.P"; // Printing the final price
             document.getElementById("priceAfterDeductingCommission").innerHTML = priceAfterDeductingCommission.toLocaleString("en-US") +" S.P"; // Printing the Price after deducting commission
